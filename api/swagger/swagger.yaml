@@ -6,6 +6,11 @@ info:
 host: localhost:10010
 # basePath prefixes all resource paths 
 basePath: /v1
+tags:
+- name: recipe
+  description: All things recipes
+- name: hello
+  description: A way to greet
 # 
 schemes:
   # tip: remove http to make production-grade
@@ -21,6 +26,8 @@ paths:
   /recipes:
     x-swagger-router-controller: recipes
     get:
+      tags: 
+      - recipe
       description: Get all the recipes
       operationId: getRecipes
       responses:
@@ -38,6 +45,8 @@ paths:
               message:
                 type: string
     post:
+      tags: 
+      - recipe
       summary: Create new recipe
       operationId: postRecipes
       parameters:
@@ -61,6 +70,8 @@ paths:
     # binds a127 app logic to a route
     x-swagger-router-controller: hello_world
     get:
+      tags: 
+      - hello
       description: Returns 'Hello' to the caller
       # used as the method name of the controller
       operationId: hello
