@@ -46,6 +46,30 @@ paths:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
+  Recipe:
+    properties:
+      id:
+        type: number
+      isPublic:
+        type: boolean
+      name: 
+        type: string
+      chef:
+        type: string
+        enum: [Melissa, Mel, Cookie]
+      stepList:
+        type: array
+        items: 
+          type: string
+      ingredients:
+          type: array
+          items: 
+            type: object
+            properties:
+              amount:
+                type: number
+              name: 
+                type: string
   HelloWorldResponse:
     required:
       - message
