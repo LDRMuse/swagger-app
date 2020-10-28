@@ -18,6 +18,26 @@ consumes:
 produces:
   - application/json
 paths:
+  /recipes:
+    x-swagger-router-controller: recipes
+    get:
+      description: Get all the recipes
+      operationId: getRecipes
+      responses:
+        "200":
+          description: Success, got all the recipes
+          schema:
+            type: array
+            items: 
+              $ref: "#/definitions/Recipe"
+        "500":
+          description: Could not get recipes
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+          
   /hello:
     # binds a127 app logic to a route
     x-swagger-router-controller: hello_world
