@@ -28,6 +28,7 @@ paths:
     get:
       tags: 
       - recipe
+      summary: Views recipes
       description: Get all the recipes
       operationId: getRecipes
       responses:
@@ -72,6 +73,7 @@ paths:
     get:
       tags: 
       - hello
+      summary: Calls function to say hello
       description: Returns 'Hello' to the caller
       # used as the method name of the controller
       operationId: hello
