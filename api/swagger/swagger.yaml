@@ -37,7 +37,26 @@ paths:
             properties:
               message:
                 type: string
-          
+    post:
+      summary: Create new recipe
+      operationId: postRecipes
+      parameters:
+        - in: body
+          name: body
+          description: The recipe to be added
+          required: true
+          schema:
+            $ref: "#/definitions/Recipe"
+      responses: 
+        "204":
+          description: Success
+        "500":
+          description: Unexpected Error
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
   /hello:
     # binds a127 app logic to a route
     x-swagger-router-controller: hello_world
