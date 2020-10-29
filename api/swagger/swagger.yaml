@@ -76,6 +76,8 @@ paths:
       required: true
       description: Numeric ID of the recipe
     delete:
+      tags: 
+      - recipe
       description: Removes a Recipe
       summary: Delete recipe
       operationId: deleteRecipe
@@ -92,6 +94,8 @@ paths:
               message:
                 type: string
     put:
+      tags: 
+      - recipe    
       description: Updates an already existing Recipe
       summary: Edit Recipe
       operationId: updateRecipe
@@ -185,6 +189,8 @@ paths:
       required: true
       description: Numeric ID of the comment
     delete:
+      tags: 
+      - recipe    
       description: Removes a comment
       summary: Delete comment
       operationId: deleteComment
