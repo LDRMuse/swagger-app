@@ -171,8 +171,35 @@ paths:
             properties:
               message:
                 type: string              
-  
-        
+  /recipes/{recipeId}/comments/{commentId}:
+    x-swagger-router-controller: recipes
+    parameters:
+    - in: path
+      name: recipeId
+      type: number
+      required: true
+      description: Numeric ID of the recipe
+    - in: path
+      name: commentId
+      type: number
+      required: true
+      description: Numeric ID of the comment
+    delete:
+      description: Removes a comment
+      summary: Delete comment
+      operationId: deleteComment
+      responses:
+        "204":
+          description: Success
+        "404":
+          description: ID does not match any comments
+        "500":
+          description: Unexpected Error
+          schema:
+            type: object
+            properties:
+              message:
+                type: string  
   /hello:
     # binds a127 app logic to a route
     x-swagger-router-controller: hello_world
