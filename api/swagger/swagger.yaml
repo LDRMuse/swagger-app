@@ -114,7 +114,7 @@ paths:
               message:
                 type: string
   /recipes/{recipeId}/comments:
-    x-swagger-router-controller: recipes
+    x-swagger-router-controller: comments
     parameters:
     - in: path
       name: recipeId
@@ -172,7 +172,7 @@ paths:
               message:
                 type: string              
   /recipes/{recipeId}/comments/{commentId}:
-    x-swagger-router-controller: recipes
+    x-swagger-router-controller: comments
     parameters:
     - in: path
       name: recipeId
