@@ -91,6 +91,29 @@ paths:
             properties:
               message:
                 type: string
+    put:
+      description: Updates an already existing Recipe
+      summary: Edit Recipe
+      operationId: updateRecipe
+      parameters: 
+        - in: body
+          name: Recipe
+          schema:
+           $ref: "#/definitions/Recipe"
+          description: The recipes new values
+      responses:
+        "204":
+          description: Success
+        "404":
+          description: ID does not match any recipes
+        "500":
+          description: Unexpected Error
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+        
   /hello:
     # binds a127 app logic to a route
     x-swagger-router-controller: hello_world
