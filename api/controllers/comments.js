@@ -25,7 +25,7 @@ var util = require('util');
   we specify that in the exports of this module that 'recipe' maps to the function named 'recipe'
  */
 module.exports = {
-  comments: getComment
+  comments: getComments
 };
 
 /*
@@ -34,7 +34,7 @@ module.exports = {
   Param 1: a handle to the request object
   Param 2: a handle to the response object
  */
-function getComment(req, res) {
+function getComments(req, res) {
   // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
   var author = req.swagger.author.chef.value || 'chef';
   var comment = util.format('Hello, %s!', author);

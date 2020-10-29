@@ -36,7 +36,7 @@ module.exports = {
  */
 function getRecipe(req, res) {
   // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
-  var recipe = req.swagger.params.chef.value || 'chef';
+  var chef = req.swagger.params.chef.value || 'chef';
   var recipe = util.format('Hello, %s!', chef);
 
   // this sends back a JSON response which is a single string
