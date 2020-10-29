@@ -145,6 +145,18 @@ paths:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
+  Comment:
+    properties:
+      id:
+        type: number
+      recipeId:
+        type: number
+      author:
+        type: string
+      text:
+        type: string
+      date:
+        type: string
   Recipe:
     properties:
       id:
