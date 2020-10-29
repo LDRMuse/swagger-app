@@ -1,44 +1,56 @@
-'use strict';
-/*
- 'use strict' is not required but helpful for turning syntactical errors into true errors in the program flow
- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
-*/
+// side-note; it's best to describe arrays as lists for a quick reminder that the list is an array
 
-/*
- Modules make it possible to import JavaScript files into your application.  Modules are imported
- using 'require' statements that give you a reference to the module.
+// this is a function that returns fixed data
+let recipeList = getRecipeList()
 
-  It is a good idea to list the modules that your application depends on in the package.json in the project root
- */
-var util = require('util');
+module.exports.getRecipe = (req, res) => {
+  let responseRecipeList = []
 
-/*
- Once you 'require' a module you can reference the things that it exports.  These are defined in module.exports.
+  for (let recipe of recipeList) {
+    if (recipe.isPublic) {
+      responseRecipeList.push(recipe)
+    }
+  }
+  return res.json(responseRecipeList).status(200)
+}
 
- For a controller in a127 (which this is) you should export the functions referenced in your Swagger document by name.
-
- Either:
-  - The HTTP Verb of the corresponding operation (get, put, post, delete, etc)
-  - Or the operationId associated with the operation in your Swagger document
-
-  In the starter/skeleton project the 'get' operation on the '/recipe' path has an operationId named 'getRecipe'.  Here,
-  we specify that in the exports of this module that 'recipe' maps to the function named 'recipe'
- */
-module.exports = {
-  recipe: getRecipe
-};
-
-/*
-  Functions in a127 controllers used for operations should take two parameters:
-
-  Param 1: a handle to the request object
-  Param 2: a handle to the response object
- */
-function getRecipe(req, res) {
-  // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
-  var chef = req.swagger.params.chef.value || 'chef';
-  var recipe = util.format('Hello, %s!', chef);
-
-  // this sends back a JSON response which is a single string
-  res.json(recipe);
+function getRecipeList() {
+  return [
+    {
+      id: 1,
+      isPublic: true,
+      name: 'PB and Jelly',
+      stepList: ['get two slices of bread', 'spread peanut butter', 'spread jelly'],
+      ingredients: [
+        {
+          amount: 2,
+          name: 'bread'
+        },
+        {
+          amount: 1,
+          name: 'peanut butter'
+        },
+        {
+          amount: 1,
+          name: 'jelly'
+        }
+      ]
+    },
+    {
+      id: 2,
+      isPublic: false,
+      name: 'cereal',
+      stepList: ['get bowl', 'pour cereal', 'pour milk'],
+      ingredients: [
+        {
+          amount: 1,
+          name: 'Milk'
+        },
+        {
+          amount: 4,
+          name: 'Cereal'
+        }
+      ]
+    }
+  ]
 }

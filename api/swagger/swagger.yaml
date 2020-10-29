@@ -30,7 +30,7 @@ paths:
       - recipe
       summary: Views recipes
       description: Get all the recipes
-      operationId: getRecipes
+      operationId: getRecipe
       responses:
         "200":
           description: Success, got all the recipes
@@ -259,7 +259,7 @@ definitions:
         type: string
       chef:
         type: string
-        enum: [Melissa, Mel, Cookie]
+        enum: [cook, culinarian]
       stepList:
         type: array
         items: 
