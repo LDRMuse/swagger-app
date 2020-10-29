@@ -49,7 +49,7 @@ paths:
       tags: 
       - recipe
       summary: Create new recipe
-      operationId: postRecipes
+      operationId: postRecipe
       parameters:
         - in: body
           name: body

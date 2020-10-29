@@ -3,7 +3,7 @@
 // this is a function that returns fixed data
 let recipeList = getRecipeList()
 
-module.exports.getRecipe = (req, res) => {
+module.exports.getRecipe = (_, res) => {
   let responseRecipeList = []
 
   for (let recipe of recipeList) {
@@ -12,6 +12,15 @@ module.exports.getRecipe = (req, res) => {
     }
   }
   return res.json(responseRecipeList).status(200)
+}
+
+module.exports.postRecipe = (req, res) => {
+  let newRecipe = req.body
+  newRecipe.id = recipeList.length + 1
+  newRecipe.isPublic = true
+  recipeList.push(newRecipe)
+
+  return res.status(204).end()
 }
 
 function getRecipeList() {
