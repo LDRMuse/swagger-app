@@ -259,7 +259,7 @@ definitions:
         type: string
       chef:
         type: string
-        enum: [cook, culinarian]
+        enum: [Cookie, Melissa, Mel]
       stepList:
         type: array
         items: 
