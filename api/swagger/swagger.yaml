@@ -67,6 +67,30 @@ paths:
             properties:
               message:
                 type: string
+  /recipes/{recipeId}:
+    x-swagger-router-controller: recipes
+    parameters:
+    - in: path
+      name: recipeId
+      type: number
+      required: true
+      description: Numeric ID of the recipe
+    delete:
+      description: Removes a Recipe
+      summary: Delete recipe
+      operationId: deleteRecipe
+      responses:
+        "204":
+          description: Success
+        "404":
+          description: ID does not match any recipes
+        "500":
+          description: Unexpected Error
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
   /hello:
     # binds a127 app logic to a route
     x-swagger-router-controller: hello_world
