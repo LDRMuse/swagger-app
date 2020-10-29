@@ -135,14 +135,42 @@ paths:
             items: 
               $ref: "#/definitions/Comment"
         "404":
-          description: ID does not match any recipes              
+          description: ID does not match             
         "500":
           description: Unexpected Error
           schema:
             type: object
             properties:
               message:
-                type: string  
+                type: string
+    post:
+      tags: 
+      - recipe
+      summary: Create new comment
+      operationId: postComment
+      parameters:
+        - in: body
+          name: body
+          description: The comment to be added
+          required: true
+          schema:
+            $ref: "#/definitions/Comment"
+      responses:
+        "200":
+          description: Success, created a comment
+          schema:
+            type: array
+            items: 
+              $ref: "#/definitions/Comment"
+        "404":
+          description: ID does not match              
+        "500":
+          description: Unexpected Error
+          schema:
+            type: object
+            properties:
+              message:
+                type: string              
   
         
   /hello:
