@@ -16,6 +16,7 @@ module.exports.getRecipe = (_, res) => {
 
 module.exports.postRecipe = (req, res) => {
   let newRecipe = req.body
+  //TODO look into a better way of assigning an id
   newRecipe.id = publicRecipeList.length + 15
   newRecipe.isPublic = true
   publicRecipeList.push(newRecipe)
