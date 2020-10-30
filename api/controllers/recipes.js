@@ -1,17 +1,16 @@
 // side-note; it's best to describe arrays as lists for a quick reminder that the list is an array
-
-// this is a function that returns fixed data
-let recipeList = getRecipeList()
+const Recipe = require('../models/Recipe');
 
 module.exports.getRecipe = (_, res) => {
-  let responseRecipeList = []
+  let recipes = new Recipe.getRecipeList()
+  let publicRecipeList = []
 
-  for (let recipe of recipeList) {
+  for (let recipe of recipes) {
     if (recipe.isPublic) {
-      responseRecipeList.push(recipe)
+      publicRecipeList.push(recipe)
     }
   }
-  return res.json(responseRecipeList).status(200)
+  return res.json(publicRecipeList).status(200)
 }
 
 module.exports.postRecipe = (req, res) => {
@@ -23,43 +22,3 @@ module.exports.postRecipe = (req, res) => {
   return res.status(204).end()
 }
 
-function getRecipeList() {
-  return [
-    {
-      id: 1,
-      isPublic: true,
-      name: 'PB and Jelly',
-      stepList: ['get two slices of bread', 'spread peanut butter', 'spread jelly'],
-      ingredients: [
-        {
-          amount: 2,
-          name: 'bread'
-        },
-        {
-          amount: 1,
-          name: 'peanut butter'
-        },
-        {
-          amount: 1,
-          name: 'jelly'
-        }
-      ]
-    },
-    {
-      id: 2,
-      isPublic: false,
-      name: 'cereal',
-      stepList: ['get bowl', 'pour cereal', 'pour milk'],
-      ingredients: [
-        {
-          amount: 1,
-          name: 'Milk'
-        },
-        {
-          amount: 4,
-          name: 'Cereal'
-        }
-      ]
-    }
-  ]
-}
