@@ -16,10 +16,25 @@ module.exports.getRecipe = (_, res) => {
 
 module.exports.postRecipe = (req, res) => {
   let newRecipe = req.body
-  newRecipe.id = publicRecipeList.length + 1
+  newRecipe.id = publicRecipeList.length + 15
   newRecipe.isPublic = true
   publicRecipeList.push(newRecipe)
 
   return res.status(204).end()
+}
+
+module.exports.updateRecipe = (req, res) => {
+  // we want to get the paramter recipeId from the URL
+  let swaggerID = req.swagger.params.recipeId.value
+
+  // we want to go through our array to see if the id's match
+  for (let i = 0; i < publicRecipeList.length; i++) {
+    if (publicRecipeList[i].id === swaggerID) {
+      publicRecipeList[i] = req.body
+      return res.status(204).end()
+    }else {
+      return res.status(404).end()
+    }
+  }
 }
 
